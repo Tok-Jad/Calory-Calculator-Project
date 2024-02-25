@@ -29,20 +29,26 @@ namespace Kevin_Pharsi_Lab_Project
 
             //Calculations
             int dailyCalories = targetWeight * 12;
+            int dailyServings = dailyCalories / Calories;
 
-            //Concatenantes labels and inputs for Output
+            //Concatenates labels and inputs for Output
             string outputName = "Name: " + inputName;
             string outputFood = "Food: " + inputFood;
             string outputCalories = "Calories per Serving: " + inputCalories;
-            string outputTargetWeight = "Target Weight: " + inputTargetWeight;
-            string outputMessage = "Your daily calorie limit is: " + dailyCalories + " calories"; 
+            string outputTargetWeight = "Target Weight: " + inputTargetWeight + "lbs";
+            string outputMessage = "Your daily calorie limit is: " + dailyCalories + " calories";
+            string outputMessage2 = "You can eat: " + dailyServings + " servings of " + inputFood + " per day";
+
+            string skip = " ";
 
             //Output
             lstOutput.Items.Add(outputName);
             lstOutput.Items.Add(outputFood);
             lstOutput.Items.Add(outputCalories);
             lstOutput.Items.Add(outputTargetWeight);
+            lstOutput.Items.Add(skip);
             lstOutput.Items.Add(outputMessage);
+            lstOutput.Items.Add(outputMessage2);
         }
 
         private void btnClear_Click(object sender, EventArgs e)
