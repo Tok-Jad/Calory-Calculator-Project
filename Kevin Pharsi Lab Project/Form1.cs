@@ -28,19 +28,21 @@ namespace Kevin_Pharsi_Lab_Project
             int.TryParse(inputTargetWeight, out int targetWeight);
 
             //Calculations
-
+            int dailyCalories = targetWeight * 12;
 
             //Concatenantes labels and inputs for Output
             string outputName = "Name: " + inputName;
             string outputFood = "Food: " + inputFood;
             string outputCalories = "Calories per Serving: " + inputCalories;
             string outputTargetWeight = "Target Weight: " + inputTargetWeight;
+            string outputMessage = "Your daily calorie limit is: " + dailyCalories + " calories"; 
 
             //Output
             lstOutput.Items.Add(outputName);
             lstOutput.Items.Add(outputFood);
             lstOutput.Items.Add(outputCalories);
             lstOutput.Items.Add(outputTargetWeight);
+            lstOutput.Items.Add(outputMessage);
         }
 
         private void btnClear_Click(object sender, EventArgs e)
