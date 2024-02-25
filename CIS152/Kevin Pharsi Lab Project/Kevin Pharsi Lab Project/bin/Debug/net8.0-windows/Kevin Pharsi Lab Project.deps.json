@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "Kevin Pharsi Lab Project/1.0.0": {
+        "runtime": {
+          "Kevin Pharsi Lab Project.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Kevin Pharsi Lab Project/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
