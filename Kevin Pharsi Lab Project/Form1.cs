@@ -20,24 +20,21 @@ namespace Kevin_Pharsi_Lab_Project
             string inputName = txtDietersName.Text;
             string inputFood = txtFoodName.Text;
 
-            //Takes the string input from calories and target weight & converts them to integers
-            string inputCalories = txtCaloriesPerServing.Text;
-            int.TryParse(inputCalories, out int Calories);
-
-            string inputTargetWeight = txtTargetWeight.Text;
-            int.TryParse(inputTargetWeight, out int targetWeight);
+            //Use parse on some inputs
+            int numericCalories = int.Parse(txtCaloriesPerServing.Text);
+            double numericTargetWeight = double.Parse(txtTargetWeight.Text);
 
             //Calculations
-            int dailyCalories = targetWeight * 12;
-            int dailyServings = dailyCalories / Calories;
+            double dailyCalories = numericTargetWeight * 12;
+            double dailyServings = dailyCalories / numericCalories;
 
             //Concatenates labels and inputs for Output
             string outputName = "Name: " + inputName;
             string outputFood = "Food: " + inputFood;
-            string outputCalories = "Calories per Serving: " + inputCalories;
-            string outputTargetWeight = "Target Weight: " + inputTargetWeight + "lbs";
+            string outputCalories = "Calories per Serving: " + numericCalories.ToString("N0");
+            string outputTargetWeight = "Target Weight: " + numericTargetWeight.ToString("N1") + "lbs";
             string outputMessage = "Your daily calorie limit is: " + dailyCalories + " calories";
-            string outputMessage2 = "You can eat: " + dailyServings + " servings of " + inputFood + " per day";
+            string outputMessage2 = "You can eat " + dailyServings + " servings of " + inputFood + " per day";
 
             string skip = " ";
 
