@@ -9,7 +9,13 @@ namespace Kevin_Pharsi_Lab_Project
 
         private void btnQuit_Click(object sender, EventArgs e)
         {
-            this.Close();
+            DialogResult ButtonSelected;
+            ButtonSelected = MessageBox.Show("Are you sure you want to quit?", "Exiting...", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (ButtonSelected == DialogResult.Yes)
+            {
+                this.Close();
+            }
+            
         }
 
         private void btnDisplay_Click(object sender, EventArgs e)
@@ -20,32 +26,50 @@ namespace Kevin_Pharsi_Lab_Project
             string inputName = txtDietersName.Text;
             string inputFood = txtFoodName.Text;
 
-            //Use parse on some inputs
-            int numericCalories = int.Parse(txtCaloriesPerServing.Text);
-            double numericTargetWeight = double.Parse(txtTargetWeight.Text);
+            double numericCalories;
+            double numericTargetWeight;
 
-            //Calculations
-            double dailyCalories = numericTargetWeight * 12;
-            double dailyServings = dailyCalories / numericCalories;
+            //Use parse on inputs (Stage 1)
+            //double numericCalories = double.Parse(txtCaloriesPerServing.Text);
+            //double numericTargetWeight = double.Parse(txtTargetWeight.Text);
 
-            //Concatenates labels and inputs for Output
-            string outputName = "Name: " + inputName;
-            string outputFood = "Food: " + inputFood;
-            string outputCalories = "Calories per Serving: " + numericCalories.ToString("N0");
-            string outputTargetWeight = "Target Weight: " + numericTargetWeight.ToString("N1") + "lbs";
-            string outputMessage = "Your daily calorie limit is: " + dailyCalories + " calories";
-            string outputMessage2 = "You can eat " + dailyServings + " servings of " + inputFood + " per day";
+            //TryParse Version (ICA 4)
+            bool numericCaloriesValid;
+            bool numericTargetWeightValid;
 
-            string skip = " ";
+            numericCaloriesValid = double.TryParse(txtCaloriesPerServing.Text, out numericCalories);
+            numericTargetWeightValid = double.TryParse(txtTargetWeight.Text, out numericTargetWeight);
 
-            //Output
-            lstOutput.Items.Add(outputName);
-            lstOutput.Items.Add(outputFood);
-            lstOutput.Items.Add(outputCalories);
-            lstOutput.Items.Add(outputTargetWeight);
-            lstOutput.Items.Add(skip);
-            lstOutput.Items.Add(outputMessage);
-            lstOutput.Items.Add(outputMessage2);
+            //ICA 5
+            if (numericCaloriesValid && numericTargetWeightValid)
+            {
+
+                //Calculations
+                double dailyCalories = numericTargetWeight * 12;
+                double dailyServings = dailyCalories / numericCalories;
+
+                //Concatenates labels and inputs for Output
+                string outputName = "Name: " + inputName;
+                string outputFood = "Food: " + inputFood;
+                string outputCalories = "Calories per Serving: " + numericCalories.ToString("N0");
+                string outputTargetWeight = "Target Weight: " + numericTargetWeight.ToString("N1") + "lbs";
+                string outputMessage = "Your daily calorie limit is: " + dailyCalories + " calories";
+                string outputMessage2 = "You can eat " + dailyServings.ToString("N1") + " servings of " + inputFood + " per day";
+
+                string skip = " ";
+
+                //Output
+                lstOutput.Items.Add(outputName);
+                lstOutput.Items.Add(outputFood);
+                lstOutput.Items.Add(outputCalories);
+                lstOutput.Items.Add(outputTargetWeight);
+                lstOutput.Items.Add(skip);
+                lstOutput.Items.Add(outputMessage);
+                lstOutput.Items.Add(outputMessage2);
+            } else
+            {
+                lstOutput.Items.Add("The numeric values entered are not valid");
+            }
         }
 
         private void btnClear_Click(object sender, EventArgs e)
