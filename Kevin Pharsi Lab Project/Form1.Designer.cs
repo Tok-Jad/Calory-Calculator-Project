@@ -96,13 +96,13 @@
             lstOutput.ItemHeight = 15;
             lstOutput.Location = new Point(230, 183);
             lstOutput.Name = "lstOutput";
-            lstOutput.Size = new Size(472, 109);
+            lstOutput.Size = new Size(472, 154);
             lstOutput.TabIndex = 8;
             lstOutput.TabStop = false;
             // 
             // btnDisplay
             // 
-            btnDisplay.Location = new Point(230, 343);
+            btnDisplay.Location = new Point(230, 382);
             btnDisplay.Name = "btnDisplay";
             btnDisplay.Size = new Size(75, 23);
             btnDisplay.TabIndex = 9;
@@ -112,7 +112,7 @@
             // 
             // btnClear
             // 
-            btnClear.Location = new Point(430, 343);
+            btnClear.Location = new Point(427, 382);
             btnClear.Name = "btnClear";
             btnClear.Size = new Size(75, 23);
             btnClear.TabIndex = 10;
@@ -122,7 +122,7 @@
             // 
             // btnQuit
             // 
-            btnQuit.Location = new Point(627, 343);
+            btnQuit.Location = new Point(627, 382);
             btnQuit.Name = "btnQuit";
             btnQuit.Size = new Size(75, 23);
             btnQuit.TabIndex = 11;
