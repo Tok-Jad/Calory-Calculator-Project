@@ -40,6 +40,11 @@
             btnQuit = new Button();
             lblTargetWeight = new Label();
             txtTargetWeight = new TextBox();
+            groupBox1 = new GroupBox();
+            radioButton3 = new RadioButton();
+            radioButton2 = new RadioButton();
+            radioButton1 = new RadioButton();
+            groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // lblDietersName
@@ -146,11 +151,57 @@
             txtTargetWeight.Size = new Size(100, 23);
             txtTargetWeight.TabIndex = 7;
             // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(radioButton3);
+            groupBox1.Controls.Add(radioButton2);
+            groupBox1.Controls.Add(radioButton1);
+            groupBox1.Location = new Point(502, 42);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(200, 119);
+            groupBox1.TabIndex = 12;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "groupBox1";
+            // 
+            // radioButton3
+            // 
+            radioButton3.AutoSize = true;
+            radioButton3.Location = new Point(6, 94);
+            radioButton3.Name = "radioButton3";
+            radioButton3.Size = new Size(132, 19);
+            radioButton3.TabIndex = 15;
+            radioButton3.Text = "Regular Weight Loss";
+            radioButton3.UseVisualStyleBackColor = true;
+            radioButton3.CheckedChanged += radioButton3_CheckedChanged;
+            // 
+            // radioButton2
+            // 
+            radioButton2.AutoSize = true;
+            radioButton2.Location = new Point(6, 60);
+            radioButton2.Name = "radioButton2";
+            radioButton2.Size = new Size(116, 19);
+            radioButton2.TabIndex = 14;
+            radioButton2.Text = "Mild Weight Loss";
+            radioButton2.UseVisualStyleBackColor = true;
+            radioButton2.CheckedChanged += radioButton2_CheckedChanged;
+            // 
+            // radioButton1
+            // 
+            radioButton1.AutoSize = true;
+            radioButton1.Location = new Point(6, 22);
+            radioButton1.Name = "radioButton1";
+            radioButton1.Size = new Size(113, 19);
+            radioButton1.TabIndex = 13;
+            radioButton1.Text = "Maintain Weight";
+            radioButton1.UseVisualStyleBackColor = true;
+            radioButton1.CheckedChanged += radioButton1_CheckedChanged;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(groupBox1);
             Controls.Add(txtTargetWeight);
             Controls.Add(lblTargetWeight);
             Controls.Add(btnQuit);
@@ -165,6 +216,9 @@
             Controls.Add(lblDietersName);
             Name = "Form1";
             Text = "Kevin Pharsi Lab Project";
+            Load += Form1_Load;
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -183,5 +237,9 @@
         private Button btnQuit;
         private Label lblTargetWeight;
         private TextBox txtTargetWeight;
+        private GroupBox groupBox1;
+        private RadioButton radioButton3;
+        private RadioButton radioButton2;
+        private RadioButton radioButton1;
     }
 }

@@ -5,6 +5,7 @@ namespace Kevin_Pharsi_Lab_Project
         public Form1()
         {
             InitializeComponent();
+
         }
 
         private void btnQuit_Click(object sender, EventArgs e)
@@ -15,8 +16,11 @@ namespace Kevin_Pharsi_Lab_Project
             {
                 this.Close();
             }
-            
+
         }
+        //Constants
+        double dailyCalories;
+
 
         private void btnDisplay_Click(object sender, EventArgs e)
         {
@@ -40,12 +44,17 @@ namespace Kevin_Pharsi_Lab_Project
             numericCaloriesValid = double.TryParse(txtCaloriesPerServing.Text, out numericCalories);
             numericTargetWeightValid = double.TryParse(txtTargetWeight.Text, out numericTargetWeight);
 
+
+
+
+
+
             //ICA 5
             if (numericCaloriesValid && numericTargetWeightValid)
             {
 
                 //Calculations
-                double dailyCalories = numericTargetWeight * 12; //The daily calorie limit based on the target weight
+                //double dailyCalories = 2500;
                 double dailyServings = dailyCalories / numericCalories;
                 double percentageCalories = (numericCalories / dailyCalories) * 100; //percentage of 1 serving of the food item is of the daily calorie limit
 
@@ -69,7 +78,8 @@ namespace Kevin_Pharsi_Lab_Project
                 lstOutput.Items.Add(outputMessage);
                 lstOutput.Items.Add(outputMessage3);
                 lstOutput.Items.Add(outputMessage2);
-            } else
+            }
+            else
             {
                 lstOutput.Items.Add("The numeric values entered are not valid");
             }
@@ -84,7 +94,26 @@ namespace Kevin_Pharsi_Lab_Project
 
             lstOutput.Items.Clear();
         }
+        //Radio buttons meant to adjust the daily calorie limit.
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            dailyCalories = 2500;
+        }
 
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            dailyCalories = 2250;
+        }
 
+        private void radioButton3_CheckedChanged(object sender, EventArgs e)
+        {
+            dailyCalories = 2000;
+        }
+
+        //Checks the first radio button by default when the form loads
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            radioButton1.Checked = true;
+        }
     }
 }
