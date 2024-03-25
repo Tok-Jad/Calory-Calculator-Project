@@ -41,9 +41,9 @@
             lblTargetWeight = new Label();
             txtTargetWeight = new TextBox();
             groupBox1 = new GroupBox();
-            radioButton3 = new RadioButton();
-            radioButton2 = new RadioButton();
-            radioButton1 = new RadioButton();
+            rbtnRegular = new RadioButton();
+            rbtnMild = new RadioButton();
+            rbtnMaintain = new RadioButton();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -153,9 +153,9 @@
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(radioButton3);
-            groupBox1.Controls.Add(radioButton2);
-            groupBox1.Controls.Add(radioButton1);
+            groupBox1.Controls.Add(rbtnRegular);
+            groupBox1.Controls.Add(rbtnMild);
+            groupBox1.Controls.Add(rbtnMaintain);
             groupBox1.Location = new Point(502, 42);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(200, 119);
@@ -163,38 +163,41 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "groupBox1";
             // 
-            // radioButton3
+            // rbtnRegular
             // 
-            radioButton3.AutoSize = true;
-            radioButton3.Location = new Point(6, 94);
-            radioButton3.Name = "radioButton3";
-            radioButton3.Size = new Size(132, 19);
-            radioButton3.TabIndex = 15;
-            radioButton3.Text = "Regular Weight Loss";
-            radioButton3.UseVisualStyleBackColor = true;
-            radioButton3.CheckedChanged += radioButton3_CheckedChanged;
+            rbtnRegular.AutoSize = true;
+            rbtnRegular.Location = new Point(6, 72);
+            rbtnRegular.Name = "rbtnRegular";
+            rbtnRegular.Size = new Size(132, 19);
+            rbtnRegular.TabIndex = 2;
+            rbtnRegular.TabStop = true;
+            rbtnRegular.Text = "Regular Weight Loss";
+            rbtnRegular.UseVisualStyleBackColor = true;
+            rbtnRegular.CheckedChanged += rbtnRegular_CheckedChanged;
             // 
-            // radioButton2
+            // rbtnMild
             // 
-            radioButton2.AutoSize = true;
-            radioButton2.Location = new Point(6, 60);
-            radioButton2.Name = "radioButton2";
-            radioButton2.Size = new Size(116, 19);
-            radioButton2.TabIndex = 14;
-            radioButton2.Text = "Mild Weight Loss";
-            radioButton2.UseVisualStyleBackColor = true;
-            radioButton2.CheckedChanged += radioButton2_CheckedChanged;
+            rbtnMild.AutoSize = true;
+            rbtnMild.Location = new Point(6, 47);
+            rbtnMild.Name = "rbtnMild";
+            rbtnMild.Size = new Size(116, 19);
+            rbtnMild.TabIndex = 1;
+            rbtnMild.TabStop = true;
+            rbtnMild.Text = "Mild Weight Loss";
+            rbtnMild.UseVisualStyleBackColor = true;
+            rbtnMild.CheckedChanged += rbtnMild_CheckedChanged;
             // 
-            // radioButton1
+            // rbtnMaintain
             // 
-            radioButton1.AutoSize = true;
-            radioButton1.Location = new Point(6, 22);
-            radioButton1.Name = "radioButton1";
-            radioButton1.Size = new Size(113, 19);
-            radioButton1.TabIndex = 13;
-            radioButton1.Text = "Maintain Weight";
-            radioButton1.UseVisualStyleBackColor = true;
-            radioButton1.CheckedChanged += radioButton1_CheckedChanged;
+            rbtnMaintain.AutoSize = true;
+            rbtnMaintain.Location = new Point(6, 22);
+            rbtnMaintain.Name = "rbtnMaintain";
+            rbtnMaintain.Size = new Size(113, 19);
+            rbtnMaintain.TabIndex = 0;
+            rbtnMaintain.TabStop = true;
+            rbtnMaintain.Text = "Maintain Weight";
+            rbtnMaintain.UseVisualStyleBackColor = true;
+            rbtnMaintain.CheckedChanged += rbtnMaintain_CheckedChanged;
             // 
             // Form1
             // 
@@ -238,8 +241,8 @@
         private Label lblTargetWeight;
         private TextBox txtTargetWeight;
         private GroupBox groupBox1;
-        private RadioButton radioButton3;
-        private RadioButton radioButton2;
-        private RadioButton radioButton1;
+        private RadioButton rbtnRegular;
+        private RadioButton rbtnMild;
+        private RadioButton rbtnMaintain;
     }
 }

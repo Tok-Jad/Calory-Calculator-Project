@@ -20,6 +20,10 @@ namespace Kevin_Pharsi_Lab_Project
         }
         //Constants
         double dailyCalories;
+        string weightGoal;
+        string outputMessage4;
+
+
 
 
         private void btnDisplay_Click(object sender, EventArgs e)
@@ -45,7 +49,21 @@ namespace Kevin_Pharsi_Lab_Project
             numericTargetWeightValid = double.TryParse(txtTargetWeight.Text, out numericTargetWeight);
 
 
-
+            switch (weightGoal)
+            {
+                case "maintain":
+                    outputMessage4 = "Your goal is to " + weightGoal + " weight";
+                    dailyCalories = 2500;
+                    break;
+                case "mild":
+                    outputMessage4 = "Your goal is " + weightGoal + " weight loss";
+                    dailyCalories = 2250;
+                    break;
+                case "regular":
+                    outputMessage4 = "Your goal is " + weightGoal + " weight loss";
+                    dailyCalories = 2000;
+                    break;
+            }
 
 
 
@@ -75,15 +93,19 @@ namespace Kevin_Pharsi_Lab_Project
                 lstOutput.Items.Add(outputCalories);
                 lstOutput.Items.Add(outputTargetWeight);
                 lstOutput.Items.Add(skip);
+                lstOutput.Items.Add(outputMessage4);
                 lstOutput.Items.Add(outputMessage);
                 lstOutput.Items.Add(outputMessage3);
                 lstOutput.Items.Add(outputMessage2);
+                
             }
             else
             {
                 lstOutput.Items.Add("The numeric values entered are not valid");
             }
         }
+
+            
 
         private void btnClear_Click(object sender, EventArgs e)
         {
@@ -94,26 +116,28 @@ namespace Kevin_Pharsi_Lab_Project
 
             lstOutput.Items.Clear();
         }
-        //Radio buttons meant to adjust the daily calorie limit.
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        //Radio buttons meant to adjust the weight goal.
+        private void rbtnMaintain_CheckedChanged(object sender, EventArgs e)
         {
-            dailyCalories = 2500;
+             weightGoal = "maintain";
         }
 
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        private void rbtnMild_CheckedChanged(object sender, EventArgs e)
         {
-            dailyCalories = 2250;
+            weightGoal = "mild";
         }
 
-        private void radioButton3_CheckedChanged(object sender, EventArgs e)
+        private void rbtnRegular_CheckedChanged(object sender, EventArgs e)
         {
-            dailyCalories = 2000;
+            weightGoal = "regular";
         }
 
         //Checks the first radio button by default when the form loads
         private void Form1_Load(object sender, EventArgs e)
         {
-            radioButton1.Checked = true;
+            rbtnMaintain.Checked = true;
         }
+
+        
     }
 }
