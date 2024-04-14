@@ -161,7 +161,7 @@
             groupBox1.Size = new Size(200, 119);
             groupBox1.TabIndex = 12;
             groupBox1.TabStop = false;
-            groupBox1.Text = "groupBox1";
+            groupBox1.Text = "Weight Goal";
             // 
             // rbtnRegular
             // 

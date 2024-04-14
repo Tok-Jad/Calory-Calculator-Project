@@ -1,3 +1,5 @@
+using Microsoft.VisualBasic.Logging;
+
 namespace Kevin_Pharsi_Lab_Project
 {
     public partial class Form1 : Form
@@ -24,8 +26,7 @@ namespace Kevin_Pharsi_Lab_Project
         string outputMessage4;
 
 
-
-
+   
         private void btnDisplay_Click(object sender, EventArgs e)
         {
             lstOutput.Items.Clear();
@@ -63,30 +64,31 @@ namespace Kevin_Pharsi_Lab_Project
                     outputMessage4 = "Your goal is " + weightGoal + " weight loss";
                     dailyCalories = 2000;
                     break;
+                default:
+                    break;
+                    //Output message here
             }
 
+            //Calculations
+            double dailyServings = dailyCalories / numericCalories;
+            double percentageCalories = (numericCalories / dailyCalories) * 100; //percentage of 1 serving of the food item is of the daily calorie limit
 
 
-            //ICA 5
+
+            string outputName = "Name: " + inputName;
+            string outputFood = "Food: " + inputFood;
+            string outputCalories = "Calories per Serving: " + numericCalories.ToString("N0");
+            string outputTargetWeight = "Target Weight: " + numericTargetWeight.ToString("N1") + "lbs";
+            string outputMessage = "Your daily calorie limit is: " + dailyCalories + " calories";
+            string outputMessage2 = "You can eat " + dailyServings.ToString("N1") + " servings of " + inputFood + " per day";
+            string outputMessage3 = "1 serving of " + inputFood + " is " + percentageCalories.ToString("N0") + "% of your daily calorie limit";
+
+            string skip = " ";
+
+
+
             if (numericCaloriesValid && numericTargetWeightValid)
             {
-
-                //Calculations
-                //double dailyCalories = 2500;
-                double dailyServings = dailyCalories / numericCalories;
-                double percentageCalories = (numericCalories / dailyCalories) * 100; //percentage of 1 serving of the food item is of the daily calorie limit
-
-                //Concatenates labels and inputs for Output
-                string outputName = "Name: " + inputName;
-                string outputFood = "Food: " + inputFood;
-                string outputCalories = "Calories per Serving: " + numericCalories.ToString("N0");
-                string outputTargetWeight = "Target Weight: " + numericTargetWeight.ToString("N1") + "lbs";
-                string outputMessage = "Your daily calorie limit is: " + dailyCalories + " calories";
-                string outputMessage2 = "You can eat " + dailyServings.ToString("N1") + " servings of " + inputFood + " per day";
-                string outputMessage3 = "1 serving of " + inputFood + " is " + percentageCalories.ToString("N0") + "% of your daily calorie limit";
-
-                string skip = " ";
-
                 //Output
                 lstOutput.Items.Add(outputName);
                 lstOutput.Items.Add(outputFood);
@@ -96,13 +98,29 @@ namespace Kevin_Pharsi_Lab_Project
                 lstOutput.Items.Add(outputMessage4);
                 lstOutput.Items.Add(outputMessage);
                 lstOutput.Items.Add(outputMessage3);
-                lstOutput.Items.Add(outputMessage2);
-                
+                lstOutput.Items.Add(outputMessage2);              
             }
             else
             {
                 lstOutput.Items.Add("The numeric values entered are not valid");
             }
+
+            //ICA 8
+            //Log File Variable      
+            StreamWriter swLog = File.AppendText("logFile.txt"); //Appends log file & creates one if it doesn't exist
+            swLog.WriteLine("---------- New Log entry appended at: " + DateTime.Now.ToString() + "----------");
+            swLog.WriteLine(outputName);
+            swLog.WriteLine(outputFood);
+            swLog.WriteLine(outputCalories);
+            swLog.WriteLine(outputTargetWeight);
+            swLog.WriteLine(skip);
+            swLog.WriteLine(outputMessage4);
+            swLog.WriteLine(outputMessage);
+            swLog.WriteLine(outputMessage3);
+            swLog.WriteLine(outputMessage2);
+
+            swLog.Close();
+
         }
 
             
@@ -138,6 +156,10 @@ namespace Kevin_Pharsi_Lab_Project
             rbtnMaintain.Checked = true;
         }
 
-        
+
+
+              
+
+
     }
 }
