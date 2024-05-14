@@ -41,9 +41,12 @@
             lblTargetWeight = new Label();
             txtTargetWeight = new TextBox();
             groupBox1 = new GroupBox();
-            rbtnRegular = new RadioButton();
-            rbtnMild = new RadioButton();
-            rbtnMaintain = new RadioButton();
+            rdoRegular = new RadioButton();
+            rdoMild = new RadioButton();
+            rdoMaintain = new RadioButton();
+            openFileDialog1 = new OpenFileDialog();
+            btnOpenFile = new Button();
+            menuStrip1 = new MenuStrip();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -117,7 +120,7 @@
             // 
             // btnClear
             // 
-            btnClear.Location = new Point(427, 382);
+            btnClear.Location = new Point(375, 382);
             btnClear.Name = "btnClear";
             btnClear.Size = new Size(75, 23);
             btnClear.TabIndex = 10;
@@ -153,9 +156,9 @@
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(rbtnRegular);
-            groupBox1.Controls.Add(rbtnMild);
-            groupBox1.Controls.Add(rbtnMaintain);
+            groupBox1.Controls.Add(rdoRegular);
+            groupBox1.Controls.Add(rdoMild);
+            groupBox1.Controls.Add(rdoMaintain);
             groupBox1.Location = new Point(502, 42);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(200, 119);
@@ -163,47 +166,72 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Weight Goal";
             // 
-            // rbtnRegular
+            // rdoRegular
             // 
-            rbtnRegular.AutoSize = true;
-            rbtnRegular.Location = new Point(6, 72);
-            rbtnRegular.Name = "rbtnRegular";
-            rbtnRegular.Size = new Size(132, 19);
-            rbtnRegular.TabIndex = 2;
-            rbtnRegular.TabStop = true;
-            rbtnRegular.Text = "Regular Weight Loss";
-            rbtnRegular.UseVisualStyleBackColor = true;
-            rbtnRegular.CheckedChanged += rbtnRegular_CheckedChanged;
+            rdoRegular.AutoSize = true;
+            rdoRegular.Location = new Point(6, 72);
+            rdoRegular.Name = "rdoRegular";
+            rdoRegular.Size = new Size(132, 19);
+            rdoRegular.TabIndex = 2;
+            rdoRegular.TabStop = true;
+            rdoRegular.Text = "Regular Weight Loss";
+            rdoRegular.UseVisualStyleBackColor = true;
+            rdoRegular.CheckedChanged += rbtnRegular_CheckedChanged;
             // 
-            // rbtnMild
+            // rdoMild
             // 
-            rbtnMild.AutoSize = true;
-            rbtnMild.Location = new Point(6, 47);
-            rbtnMild.Name = "rbtnMild";
-            rbtnMild.Size = new Size(116, 19);
-            rbtnMild.TabIndex = 1;
-            rbtnMild.TabStop = true;
-            rbtnMild.Text = "Mild Weight Loss";
-            rbtnMild.UseVisualStyleBackColor = true;
-            rbtnMild.CheckedChanged += rbtnMild_CheckedChanged;
+            rdoMild.AutoSize = true;
+            rdoMild.Location = new Point(6, 47);
+            rdoMild.Name = "rdoMild";
+            rdoMild.Size = new Size(116, 19);
+            rdoMild.TabIndex = 1;
+            rdoMild.TabStop = true;
+            rdoMild.Text = "Mild Weight Loss";
+            rdoMild.UseVisualStyleBackColor = true;
+            rdoMild.CheckedChanged += rbtnMild_CheckedChanged;
             // 
-            // rbtnMaintain
+            // rdoMaintain
             // 
-            rbtnMaintain.AutoSize = true;
-            rbtnMaintain.Location = new Point(6, 22);
-            rbtnMaintain.Name = "rbtnMaintain";
-            rbtnMaintain.Size = new Size(113, 19);
-            rbtnMaintain.TabIndex = 0;
-            rbtnMaintain.TabStop = true;
-            rbtnMaintain.Text = "Maintain Weight";
-            rbtnMaintain.UseVisualStyleBackColor = true;
-            rbtnMaintain.CheckedChanged += rbtnMaintain_CheckedChanged;
+            rdoMaintain.AutoSize = true;
+            rdoMaintain.Location = new Point(6, 22);
+            rdoMaintain.Name = "rdoMaintain";
+            rdoMaintain.Size = new Size(113, 19);
+            rdoMaintain.TabIndex = 0;
+            rdoMaintain.TabStop = true;
+            rdoMaintain.Text = "Maintain Weight";
+            rdoMaintain.UseVisualStyleBackColor = true;
+            rdoMaintain.CheckedChanged += rbtnMaintain_CheckedChanged;
+            // 
+            // openFileDialog1
+            // 
+            openFileDialog1.FileName = "openFileDialog1";
+            openFileDialog1.FileOk += openFileDialog1_FileOk;
+            // 
+            // btnOpenFile
+            // 
+            btnOpenFile.Location = new Point(502, 382);
+            btnOpenFile.Name = "btnOpenFile";
+            btnOpenFile.Size = new Size(75, 23);
+            btnOpenFile.TabIndex = 13;
+            btnOpenFile.Text = "Open File";
+            btnOpenFile.UseVisualStyleBackColor = true;
+            btnOpenFile.Click += btnOpenFile_Click;
+            // 
+            // menuStrip1
+            // 
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(800, 24);
+            menuStrip1.TabIndex = 14;
+            menuStrip1.Text = "menuStrip1";
+            menuStrip1.ItemClicked += menuStrip1_ItemClicked;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnOpenFile);
             Controls.Add(groupBox1);
             Controls.Add(txtTargetWeight);
             Controls.Add(lblTargetWeight);
@@ -217,6 +245,8 @@
             Controls.Add(lblCaloriesPerServing);
             Controls.Add(lblFoodName);
             Controls.Add(lblDietersName);
+            Controls.Add(menuStrip1);
+            MainMenuStrip = menuStrip1;
             Name = "Form1";
             Text = "Kevin Pharsi Lab Project";
             Load += Form1_Load;
@@ -241,8 +271,11 @@
         private Label lblTargetWeight;
         private TextBox txtTargetWeight;
         private GroupBox groupBox1;
-        private RadioButton rbtnRegular;
-        private RadioButton rbtnMild;
-        private RadioButton rbtnMaintain;
+        private RadioButton rdoRegular;
+        private RadioButton rdoMild;
+        private RadioButton rdoMaintain;
+        private OpenFileDialog openFileDialog1;
+        private Button btnOpenFile;
+        private MenuStrip menuStrip1;
     }
 }

@@ -10,23 +10,30 @@ namespace Kevin_Pharsi_Lab_Project
 
         }
 
-        private void btnQuit_Click(object sender, EventArgs e)
-        {
-            DialogResult ButtonSelected;
-            ButtonSelected = MessageBox.Show("Are you sure you want to quit?", "Exiting...", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (ButtonSelected == DialogResult.Yes)
-            {
-                this.Close();
-            }
-
-        }
-        //Constants
-        double dailyCalories;
+        //Class level variables
         string weightGoal;
         string outputMessage4;
+        double dailyCalories;
 
 
-   
+        string logFile = "logfile.txt";         //Log File Variable
+
+        //Array of strings for the log file entries
+        const int MAX_ENTRIES = 2000;
+        string[] LogEntries = new string[MAX_ENTRIES];
+
+
+        Form2 sf;
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            rdoMaintain.Checked = true;         //Checks the first radio button by default when the form loads
+
+            sf = new Form2();
+
+        }
+
+
         private void btnDisplay_Click(object sender, EventArgs e)
         {
             lstOutput.Items.Clear();
@@ -98,7 +105,7 @@ namespace Kevin_Pharsi_Lab_Project
                 lstOutput.Items.Add(outputMessage4);
                 lstOutput.Items.Add(outputMessage);
                 lstOutput.Items.Add(outputMessage3);
-                lstOutput.Items.Add(outputMessage2);              
+                lstOutput.Items.Add(outputMessage2);
             }
             else
             {
@@ -106,9 +113,9 @@ namespace Kevin_Pharsi_Lab_Project
             }
 
             //ICA 8
-            //Log File Variable      
-            StreamWriter swLog = File.AppendText("logFile.txt"); //Appends log file & creates one if it doesn't exist
+            StreamWriter swLog = File.AppendText(logFile); //Appends log file & creates one if it doesn't exist
             swLog.WriteLine("---------- New Log entry appended at: " + DateTime.Now.ToString() + "----------");
+            swLog.WriteLine(skip);
             swLog.WriteLine(outputName);
             swLog.WriteLine(outputFood);
             swLog.WriteLine(outputCalories);
@@ -118,12 +125,14 @@ namespace Kevin_Pharsi_Lab_Project
             swLog.WriteLine(outputMessage);
             swLog.WriteLine(outputMessage3);
             swLog.WriteLine(outputMessage2);
+            swLog.WriteLine(skip);
+
 
             swLog.Close();
 
         }
 
-            
+
 
         private void btnClear_Click(object sender, EventArgs e)
         {
@@ -133,11 +142,36 @@ namespace Kevin_Pharsi_Lab_Project
             txtTargetWeight.Clear();
 
             lstOutput.Items.Clear();
+
+            rdoMaintain.Checked = true;
         }
+
+        private void btnOpenFile_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                MessageBox.Show(openFileDialog1.FileName);
+            }
+        }
+
+        private void btnQuit_Click(object sender, EventArgs e)
+        {
+            DialogResult ButtonSelected;
+            ButtonSelected = MessageBox.Show("Are you sure you want to quit?", "Exiting...", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (ButtonSelected == DialogResult.Yes)
+            {
+                this.Close();
+            }
+
+            
+
+        }
+
+
         //Radio buttons meant to adjust the weight goal.
         private void rbtnMaintain_CheckedChanged(object sender, EventArgs e)
         {
-             weightGoal = "maintain";
+            weightGoal = "maintain";
         }
 
         private void rbtnMild_CheckedChanged(object sender, EventArgs e)
@@ -150,16 +184,18 @@ namespace Kevin_Pharsi_Lab_Project
             weightGoal = "regular";
         }
 
-        //Checks the first radio button by default when the form loads
-        private void Form1_Load(object sender, EventArgs e)
+
+
+        private void openFileDialog1_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            rbtnMaintain.Checked = true;
+            
         }
 
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            
 
-
-              
-
-
+            sf.ShowDialog();
+        }
     }
 }
